@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recipe API-index</title>
+</head>
+<style>
+    #parent{
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 15px;
+        text-align: center;
+    }
+</style>
+<body>
+     <h2>Recipe API</h2>
+     <div id="parent">
+
+     </div>
+</body>
+<script src="index.js"></script>
+<script>
+    const display=(data)=>{
+        data.map((ele)=>{
+            let name =document.createElement("h3");
+            name.innerhtml = ele.name;
+            let desc =document.createElement("h3");
+            desc.innerhtml = ele.description;
+            let preTime =document.createElement("h3");
+            preTime.innerhtml = ele.preparationTime;
+            let cookTime =document.createElement("h3");
+            cookTime.innerhtml = ele.cookingTime;
+            let img =document.createElement("img");
+            img.src = ele.imageUrl;
+            let cont =document.createElement("h3");
+            cont.innerhtml = ele.country;
+            let veg =document.createElement("h3");
+            veg.innerhtml = ele.veg;
+            let div = document.createElement("div");
+            div.append(name, desc, preTime, cookTime, img, cont, veg);
+            document.getElementById("parent").append(div);
+        })
+    }
+    fetch(`http://localhost:8090/recipe/all`)
+    .then((resss)=>resss.json())
+    .then((data)=>{
+        console.log(data);
+        display(data);
+    })
+    
+</script>
+</html>

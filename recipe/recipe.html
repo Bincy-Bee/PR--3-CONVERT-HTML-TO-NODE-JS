@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recipe Form</title>
+</head>
+<style>
+    form{
+        text-align: center;
+        margin: auto;
+    }
+    form input{
+            width: 50%;
+            margin: 10px auto;
+            padding: 10px;
+            border-radius: 10px;
+            border: 1px solid rgba(255, 56, 56, 0.356);
+            outline: none;
+        }
+    form input:focus {
+            border: 2px solid hsla(216, 100%, 59%, 0.356);
+        }
+        #submit{
+            width: 200px;
+            display: block;
+            background-color: rgba(255, 56, 56, 0.356);
+            color: hsl(216, 100%, 50%);
+            font-weight: 700;
+        }
+</style>
+<body>
+    <form action="/recipe/add" method="post">
+        <input type="text" name="name" placeholder="enter recipe name"><br>
+        <input type="text" name="description" placeholder="Enter description"><br>
+        <input type="text" name="preparationTime" placeholder="Enter preparation-time"><br>
+        <input type="number" name="cookingTime" placeholder="Enter cooking-time"><br>
+        <input type="url" name="imageUrl" placeholder="Enter image-Url"><br>
+        <input type="text" name="country" placeholder="Enter recipe country"><br>
+        <input type="text" name="veg" placeholder="Enter recipre type true or false">
+        <input type="submit" name="submit" value="Add Recipe" id="submit">
+    </form>
+    
+</body>
+</html>
