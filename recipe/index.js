@@ -58,24 +58,24 @@ let initialRecipe = [
     res.send(initialRecipe);
   })
   
-//   app.patch("/recipe/update/:id", (req, res)=>{
-//     let {id} =req.params;
+  app.patch("/recipe/update/:id", (req, res)=>{
+    let {id} =req.params;
   
-//     let index = initialRecipe.findIndex((recipes)=> recipes.id == id);
+    let index = initialRecipe.findIndex((recipes)=> recipes.id == id);
     
-//     if(index == -1){
-//         res.send("Recipe not found")
-//     }
-//     else{
-//         initialRecipe[index].name = req.body.name;
-//         initialRecipe[index].description = req.body.description;
+    if(index == -1){
+        res.send("Recipe not found")
+    }
+    else{
+        initialRecipe[index].name = req.body.name;
+        initialRecipe[index].description = req.body.description;
        
 
-//         // console.log(initialRecipe[index])
-//     }
+        // console.log(initialRecipe[index])
+    }
 
-//     res.status(200).send(initialRecipe);
-//   })
+    res.status(200).send(initialRecipe);
+  })
 
 
   app.delete("/recipe/delete/:id",(req, res)=>{
@@ -85,8 +85,8 @@ let initialRecipe = [
     res.status(200).send(delRecipe);
   })
   app.get("/recipe/filter", (req,res)=>{
-    let {country, veg,cookingTime} = req.query;
-
+    let {country, veg, sort} = req.query;
+    console.log(sort)
     let store = initialRecipe;
 
     if (veg){
@@ -101,11 +101,11 @@ let initialRecipe = [
         store = store.filter((recipes)=> recipes.country == country);
     }
     
-    if(cookingTime){
-        if (cookingTime == "lth"){
+    if(sort){
+        if (sort == "lth"){
             store = store.sort((a,b)=> a.cookingTime - b.cookingTime)
         }
-        else if (cookingTime == "htl"){
+        else if (sort == "htl"){
             store = store.sort((a,b)=> b.cookingTime - a.cookingTime)
         }
     }
